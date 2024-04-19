@@ -1,5 +1,4 @@
-from lib.lib import *
-
+from lib import *
 
 # ------------------------------------------------------------------------------
 # PROCESS STEPS
@@ -7,11 +6,11 @@ from lib.lib import *
 
 
 def step1(x):
-    return file_to_str(x)
+    return file.file_to_str(x)
 
 
 def step2(x):
-    return str_to_json(x)
+    return file.str_to_json(x)
 
 
 def step3(x):
@@ -19,7 +18,7 @@ def step3(x):
 
 
 def step4(x):
-    return copy_folder(x.src, x.dest)
+    return dir.copy_folder(x.src, x.dest)
 
 
 # ------------------------------------------------------------------------------
@@ -28,7 +27,7 @@ def step4(x):
 
 
 def sub_process(x):
-    y = process_steps(x, [step1, step2, step3])
+    y = process.process_steps(x, [step1, step2, step3])
     return y
 
 
@@ -38,7 +37,7 @@ def sub_process(x):
 
 
 def process(input):
-    s4 = process_steps(input, [sub_process, step4])
+    s4 = process.process_steps(input, [sub_process, step4])
     return s4
 
 
@@ -84,7 +83,7 @@ if __name__ == "__main__":
         # Produce inputs
         #
         print("start produce!")
-        xs = list_dir("./input")
+        xs = dir.list_dir("./input")
         print(
             f"produced {len(xs)} items",
         )
